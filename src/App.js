@@ -2,7 +2,7 @@ import React from "react";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
 
-const InitialtoDoCrate = [
+let initialtoDoCrate = [
   {
     task: "Organize Garage",
     id: 1528817077286,
@@ -15,11 +15,18 @@ const InitialtoDoCrate = [
   }
 ];
 
+const localStorage = window.localStorage;
+if (localStorage.getItem("todos-saved")) {
+  initialtoDoCrate = JSON.parse(localStorage.getItem("todos-saved"));
+} else {
+  localStorage.setItem("todos-saved", JSON.stringify(initialtoDoCrate));
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toDoCrate: InitialtoDoCrate,
+      toDoCrate: initialtoDoCrate,
       newTodo: ""
     };
   }
@@ -39,16 +46,18 @@ class App extends React.Component {
 
     const newtodoCrate = this.state.toDoCrate.concat(newTodo);
 
-    this.setState({
-      toDoCrate: newtodoCrate,
-      newTodo: ""
-    });
+    if (this.state.newTodo) {
+      this.setState({
+        toDoCrate: newtodoCrate,
+        newTodo: ""
+      });
+    }
   };
 
   markCompleted = event => {
     let toDoCrateNew = this.state.toDoCrate.map(todo => {
       if (todo.id === parseInt(event.target.id)) {
-        todo.completed = true;
+        todo.completed = !todo.completed;
       }
       return todo;
     });
@@ -73,7 +82,12 @@ class App extends React.Component {
     }
   };
 
+  saveTodos = () => {
+    localStorage.setItem("todos-saved", JSON.stringify(this.state.toDoCrate));
+  };
+
   render() {
+    this.saveTodos();
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
