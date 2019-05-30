@@ -1,6 +1,70 @@
-.todo:hover {
+.todolist {
+  max-height: 50vh;
+  overflow-y: auto;
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+.todo {
+  word-wrap: break-word;
   cursor: pointer;
 }
+
 button {
+  width: 40%;
+  padding: 1rem;
   cursor: pointer;
+  font-size: 1.1rem;
+  border-radius: 0.3rem;
+  border: 0.05rem solid #c6550a;
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+button:hover {
+  background: #5614b0; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #dbd65c,
+    #5614b0
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #dbd65c,
+    #5614b0
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+button:focus,
+input.focus {
+  outline: none;
+}
+input {
+  width: 80%;
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  background: transparent;
+  border: .1rem solid #c6550a;
+}
+.todoform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.button-wrapper {
+  width: 70%;
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+.search {
+  width: 35%;
+  align-self: flex-start;
 }

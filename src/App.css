@@ -1,0 +1,41 @@
+#root {
+  padding: 1rem 0;
+    background: #d3cce3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    #e9e4f0,
+    #d3cce3
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    #e9e4f0,
+    #d3cce3
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.app {
+  width: 50%;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+@media (max-width: 500px) {
+  .app {
+    width: 90%;
+  }
+}
+h2 {
+    color: #c6550a;
+}
