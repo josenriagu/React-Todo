@@ -36,6 +36,9 @@
     width: 90%;
   }
 }
+.main p {
+  color: green;
+}
 h2 {
     color: #c6550a;
 }

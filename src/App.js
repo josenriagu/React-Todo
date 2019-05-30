@@ -107,6 +107,10 @@ class App extends React.Component {
         </div>
         <div className="main">
           <h2>Welcome to your Todo App!</h2>
+          <p>
+            Click/touch a task to mark as completed, then use the clear button
+            to clear completed tasks.
+          </p>
           <TodoList
             searchString={this.state.searchString}
             toDoCrate={this.state.toDoCrate}
