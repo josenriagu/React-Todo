@@ -1,18 +1,20 @@
 import React from "react";
+import Search from "./components/TodoComponents/Search";
 import TodoList from "./components/TodoComponents/TodoList";
 import TodoForm from "./components/TodoComponents/TodoForm";
+import "./App.css";
 
 let initialtoDoCrate = [
-  {
-    task: "Organize Garage",
-    id: 1528817077286,
-    completed: false
-  },
-  {
-    task: "Bake Cookies",
-    id: 1528817084358,
-    completed: false
-  }
+  // {
+  //   task: "Organize Garage",
+  //   id: 1528817077286,
+  //   completed: false
+  // },
+  // {
+  //   task: "Bake Cookies",
+  //   id: 1528817084358,
+  //   completed: false
+  // }
 ];
 
 const localStorage = window.localStorage;
@@ -27,7 +29,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       toDoCrate: initialtoDoCrate,
-      newTodo: ""
+      newTodo: "",
+      searchString: ""
     };
   }
 
@@ -86,22 +89,37 @@ class App extends React.Component {
     localStorage.setItem("todos-saved", JSON.stringify(this.state.toDoCrate));
   };
 
+  searchTodo = event => {
+    this.setState({
+      searchString: event.target.value
+    });
+  };
+
   render() {
     this.saveTodos();
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoList
-          todo={this.state.toDoCrate}
-          markCompleted={this.markCompleted}
-        />
-        <TodoForm
-          value={this.state.newTodo}
-          changeHandler={this.changeTodo}
-          addTodo={this.addTodo}
-          clearTodo={this.clearTodo}
-          addOnEnter={this.addOnEnter}
-        />
+      <div className="app">
+        <div className="search">
+          <Search
+            value={this.state.searchString}
+            changeHandler={this.searchTodo}
+          />
+        </div>
+        <div className="main">
+          <h2>Welcome to your Todo App!</h2>
+          <TodoList
+            searchString={this.state.searchString}
+            toDoCrate={this.state.toDoCrate}
+            markCompleted={this.markCompleted}
+          />
+          <TodoForm
+            value={this.state.newTodo}
+            changeHandler={this.changeTodo}
+            addTodo={this.addTodo}
+            clearTodo={this.clearTodo}
+            addOnEnter={this.addOnEnter}
+          />
+        </div>
       </div>
     );
   }
